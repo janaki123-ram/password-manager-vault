@@ -1,0 +1,305 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background: linear-gradient(135deg, #e0f7fa, #f3e8ff, #fff0f5);
+  color: #2d2d3a;
+  min-height: 100vh;
+}
+
+.vault-container {
+  max-width: 1000px;
+  margin: 0 auto;
+  padding: 40px 20px 80px;
+}
+
+.vault-container h1 {
+  text-align: center;
+  font-size: 2.4rem;
+  color: #0099cc;
+  letter-spacing: 1px;
+  margin-bottom: 30px;
+  animation: fadeSlideDown 0.8s ease-out;
+}
+
+@keyframes fadeSlideDown {
+  from { opacity: 0; transform: translateY(-20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* Form */
+.vault-form {
+  background: rgba(255, 255, 255, 0.6);
+  border: 1px solid rgba(0, 0, 0, 0.08);
+  border-radius: 16px;
+  padding: 30px;
+  margin-bottom: 40px;
+  backdrop-filter: blur(10px);
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 20px;
+  align-items: end;
+  animation: fadeSlideUp 0.6s ease-out;
+}
+
+@keyframes fadeSlideUp {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.vault-form input {
+  padding: 12px 14px;
+  border-radius: 8px;
+  border: 1px solid rgba(0, 0, 0, 0.15);
+  background: #ffffff;
+  color: #2d2d3a;
+  font-size: 1rem;
+  outline: none;
+  transition: all 0.3s ease;
+}
+
+.vault-form input:focus {
+  border-color: #0099cc;
+  animation: glowPulse 1.2s ease-in-out infinite;
+}
+
+@keyframes glowPulse {
+  0%, 100% { border-color: #0099cc; }
+  50% { border-color: #66ccff; }
+}
+
+.vault-form input::placeholder {
+  color: #999;
+}
+
+.btn-submit {
+  padding: 13px 20px;
+  border: none;
+  border-radius: 8px;
+  background: linear-gradient(135deg, #00d4ff, #0099ff);
+  color: #ffffff;
+  font-weight: 700;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: transform 0.2s ease, opacity 0.2s ease;
+  height: 48px;
+}
+
+.btn-submit:hover {
+  transform: translateY(-2px);
+  opacity: 0.9;
+}
+
+.btn-submit:active {
+  transform: scale(0.96);
+}
+
+/* Card Grid */
+.card-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+  gap: 20px;
+}
+
+.vault-card {
+  background: rgba(255, 255, 255, 0.7);
+  border: 1px solid rgba(0, 0, 0, 0.08);
+  border-radius: 14px;
+  padding: 20px;
+  position: relative;
+  transition: transform 0.25s ease;
+  animation: cardPopIn 0.4s ease-out;
+}
+
+@keyframes cardPopIn {
+  from { opacity: 0; transform: scale(0.85) translateY(15px); }
+  to { opacity: 1; transform: scale(1) translateY(0); }
+}
+
+.vault-card:hover {
+  transform: translateY(-5px);
+  border-color: rgba(0, 153, 204, 0.4);
+}
+
+.card-title {
+  color: #0099cc;
+  margin-bottom: 12px;
+  font-size: 1.2rem;
+  word-break: break-word;
+}
+
+.card-field {
+  font-size: 0.95rem;
+  color: #444;
+  margin-bottom: 6px;
+  word-break: break-word;
+}
+
+.card-field span {
+  color: #1a1a1a;
+  font-weight: 500;
+}
+
+.card-actions {
+  display: flex;
+  gap: 10px;
+  margin-top: 15px;
+}
+
+.btn-action {
+  flex: 1;
+  padding: 8px;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  font-weight: 600;
+  font-size: 0.85rem;
+  transition: opacity 0.2s ease, transform 0.15s ease;
+}
+
+.btn-action:hover {
+  opacity: 0.85;
+}
+
+.btn-action:active {
+  transform: scale(0.96);
+}
+
+.btn-toggle {
+  background: #e0e0e0;
+  color: #333;
+}
+
+.btn-edit {
+  background: #ffb300;
+  color: #1a1a1a;
+}
+
+.btn-delete {
+  background: #ff4d4d;
+  color: #fff;
+}
+
+/* Empty state */
+.empty-state {
+  text-align: center;
+  color: #888;
+  margin-top: 40px;
+  font-size: 1rem;
+}
+
+/* Toast */
+.toast-popup {
+  position: fixed;
+  top: 25px;
+  right: 25px;
+  background: linear-gradient(135deg, #00e676, #00c853);
+  color: #08230f;
+  padding: 14px 24px;
+  border-radius: 10px;
+  font-weight: 700;
+  font-size: 0.95rem;
+  z-index: 1000;
+  opacity: 0;
+  transform: translateX(120%);
+  transition: all 0.4s cubic-bezier(0.68, -0.55, 0.27, 1.55);
+  pointer-events: none;
+}
+
+.toast-popup.show {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+/* Field error message */
+.field-error {
+  color: #e53935;
+  font-size: 0.85rem;
+  margin-top: 6px;
+}
+
+/* DB Info button section */
+.db-info-section {
+  text-align: center;
+  margin-top: 30px;
+}
+
+.btn-db-info {
+  padding: 13px 28px;
+  border: none;
+  border-radius: 8px;
+  background: linear-gradient(135deg, #ff9966, #ff5e62);
+  color: #ffffff;
+  font-weight: 700;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: transform 0.2s ease, opacity 0.2s ease;
+}
+
+.btn-db-info:hover {
+  transform: translateY(-2px);
+  opacity: 0.9;
+}
+
+.btn-db-info:active {
+  transform: scale(0.96);
+}
+
+/* Auth form on vault-view page */
+.auth-form {
+  max-width: 400px;
+  margin: 0 auto;
+  background: rgba(255, 255, 255, 0.6);
+  border: 1px solid rgba(0, 0, 0, 0.08);
+  border-radius: 16px;
+  padding: 30px;
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  animation: fadeSlideUp 0.6s ease-out;
+}
+
+.auth-form label {
+  font-size: 0.9rem;
+  color: #555;
+  font-weight: 600;
+  display: block;
+  margin-bottom: 8px;
+}
+
+.auth-form input {
+  width: 100%;
+  padding: 12px 14px;
+  border-radius: 8px;
+  border: 1px solid rgba(0, 0, 0, 0.15);
+  background: #ffffff;
+  color: #2d2d3a;
+  font-size: 1rem;
+  outline: none;
+}
+
+.card-meta {
+  font-size: 0.8rem;
+  color: #999;
+}
+
+/* Responsive */
+@media (max-width: 600px) {
+  .vault-container h1 {
+    font-size: 1.6rem;
+  }
+
+  .vault-form {
+    grid-template-columns: 1fr;
+  }
+
+  .toast-popup {
+    right: 15px;
+    left: 15px;
+    top: 15px;
+  }
+}
